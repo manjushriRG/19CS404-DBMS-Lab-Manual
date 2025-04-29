@@ -48,25 +48,49 @@ Design a database for patient management, appointments, medical records, and bil
 # ER Diagram Submission - Student Name
 
 ## Scenario Chosen:
-University / Hospital (choose one)
+Hospital
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+The ER diagram models a hospital system with entities for patients, doctors, hospitals, and medical records.
+![image](https://github.com/user-attachments/assets/9af55308-9406-42c9-afeb-6d47563a2306)
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
-...
+- HOSPITAL
+Hospital_Id,Hospital_Name,Hospital_Address,Hospital_City
+
+- PATIENT
+Patient_Id,Patient_Name,Patient_Address,Patient_Diagnosis
+
+- DOCTOR
+Doctor_Id,Doctor_Name,Qualification,Salary
+
+- MEDICAL RECORD
+Record_Id,Date_of_Examination,Problem
+
 
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
-...
+- PATIENT — Admitted in —> HOSPITAL
+Cardinality: Many-to-One (Many patients can be admitted in one hospital)
+Participation: Total on Patient side (Each patient must be admitted to a hospital)
 
-## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+- HOSPITAL — Has —> DOCTOR
+Cardinality: One-to-Many (A hospital can have many doctors)
+Participation: Total on Hospital side (Every hospital must have doctors)
 
+- PATIENT — Has —> MEDICAL RECORD
+Cardinality: One-to-Many (A patient can have many medical records)
+Participation: Total on Patient side (Every medical record must be linked to a patient)
+
+
+## Extension (Diagnosis):
+-The Patient Diagnosis attribute in the PATIENT entity captures the essential medical condition for which the patient is treated. Billing details are not explicitly modeled here but can be extended with an additional entity Billing linked to Patient and Medical Record.
 ## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+Entities like Patient, Doctor, Hospital, and Medical Record reflect real-world medical data management needs.
+Relationships were chosen to represent realistic interactions like admissions and treatment histories.
+Medical Record is separated as an entity to allow detailed tracking of each consultation or diagnosis.
+Total Participation is used where relationships are mandatory for data integrity, like patients requiring hospital assignment and having at least one medical record.
+
+
 
 ## RESULT
+Thus the ER daigram have been successfully drawn and explained briefly.
